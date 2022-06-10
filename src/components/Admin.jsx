@@ -12,6 +12,8 @@ export default function Admin() {
   var user = JSON.parse(localStorage.getItem("user"))
   var fName = localStorage.getItem("fName")
   var jwt = localStorage.getItem("jwt")
+  const userObj1 = localStorage.getItem('user1')
+  const user1 = JSON.parse(userObj1);
   const navigate = useNavigate();
   const url = 'http://localhost:8080/bankusers/1'
 
@@ -23,14 +25,29 @@ export default function Admin() {
     navigate("/")
   }
 
-  const oneuser = (e) => {
+  const getallusers = (e) => {
+    var user = JSON.parse(localStorage.getItem("user"))
+    var fName = localStorage.getItem("fName")
+    var jwt = localStorage.getItem("jwt")
+    const url = 'http://localhost:8080/bankusers'
+    
+    console.log(jwt)
+    console.log(url)
+    console.log("getalluers")
+    
+    
 
-    axios.post(url + fName, { headers: { "Authorization": `Bearer ${jwt}` } }).then(function (response) {
-
-      console.log(response.data);
-
-    })
   }
+
+
+  // const oneuser = (e) => {
+
+  //   axios.post(url + fName, { headers: { "Authorization": `Bearer ${jwt}` } }).then(function (response) {
+
+  //     console.log(response.data);
+
+  //   })
+  // }
 
   return (
     <div>
@@ -49,12 +66,13 @@ export default function Admin() {
 
           </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div class="text-sm lg:flex-grow">
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4" onClick={oneuser}>
+            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
+              {/* <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4" onClick={oneuser}> */}
               Home
             </a>
-            <a href="/user" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
+            <a href="/user" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4" onClick={() => getallusers(user)}>
               Users
             </a>
             <a href="/account" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
