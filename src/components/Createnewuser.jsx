@@ -1,11 +1,10 @@
 import React from 'react'
 // import loginImg from '../assets/login.jpg'
 import user1Img from '../assets/user1.jpg'
-import { useState } from 'react';
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import { type } from '@testing-library/user-event/dist/type';
 
 
 export default function Createnewuser() {
@@ -19,8 +18,6 @@ export default function Createnewuser() {
   var jwt = localStorage.getItem("jwt")
   // const navigate = useNavigate();
 
-
-
   const getnewuser = (e) => {
 
     // console.log("login data", e)
@@ -30,34 +27,35 @@ export default function Createnewuser() {
     console.log(userEmail)
     console.log(password)
     console.log(type)
+    console.log(jwt)
 
     axios({
       method: "post",
       url: "http://localhost:8080/createbankusers",
       headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
       data: {
-          fName: fName,
-          lName: lName,
-          addres: addres,
-          userEmail: userEmail,
-          password: password,
-          type: type
+        fName: fName,
+        lName: lName,
+        addres: addres,
+        userEmail: userEmail,
+        password: password,
+        type: type
       },
       // withCredentials: true,
       mode: "cors",
-  }).then((res) => {
-        console.log("response", res.data.body.jwt)
-        console.log("user", res.data.body.user.uId)
+    }).then((res) => {
+      console.log("response", res.data.body.jwt)
+      console.log("user", res.data.body.user.uId)
 
-        localStorage.setItem('jwt', res.data.body.jwt)
-        localStorage.setItem('user', JSON.stringify(res.data.body.user))
-        console.log(res.data.body.user)
-        console.log(localStorage.getItem('user'))
+      localStorage.setItem('jwt', res.data.body.jwt)
+      localStorage.setItem('user', JSON.stringify(res.data.body.user))
+      console.log(res.data.body.user)
+      console.log(localStorage.getItem('user'))
 
-      })
+    })
   }
 
   return (
@@ -84,11 +82,11 @@ export default function Createnewuser() {
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>User Email</label>
-            <input className='rounded-lg bg-violet-200 mt-1 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setEmail(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-1 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="email" onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Password</label>
-            <input className='rounded-lg bg-violet-200 mt-1 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setPassword(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-1 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="password" onChange={(e) => setPassword(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Type</label>
@@ -102,7 +100,7 @@ export default function Createnewuser() {
             </div> */}
 
 
-          <button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' type='button' onClick={getnewuser}>Submit</button>
+          <button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' onClick={getnewuser}>Submit</button>
 
           <Link to="/admin">
 
@@ -121,4 +119,3 @@ export default function Createnewuser() {
     </div>
   )
 }
-
