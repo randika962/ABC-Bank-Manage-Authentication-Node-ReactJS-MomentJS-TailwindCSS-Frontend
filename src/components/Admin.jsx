@@ -49,8 +49,8 @@ export default function Admin() {
 
           </button>
         </div>
-        <div class="items-center hidden space-x-8 lg:flex ">
-          <div class="text-base lg:flex-grow">
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
+          <div class="text-sm lg:flex-grow">
             <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4" onClick={oneuser}>
               Home
             </a>
