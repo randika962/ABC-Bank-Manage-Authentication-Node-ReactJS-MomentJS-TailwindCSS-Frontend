@@ -7,7 +7,35 @@ import axios from 'axios';
 
 export default function Emploaccount() {
 
+var jwt = localStorage.getItem("jwt")
 
+  axios({
+    method: "get",
+    url: "http://localhost:8080/bankaccounts",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Authorization": `Bearer ` + jwt
+    }, data: null,
+
+    mode: "cors",
+  }).then((res) => {
+
+    var accounts = res.data;
+    localStorage.setItem("account", JSON.stringify(accounts))
+  })
+
+  const accountsObj = localStorage.getItem('account')
+  const account = JSON.parse(accountObj);
+  console.log(account)
+  console.log(`acc id is : ${account[0].aId}`)
+
+  const accAID = account[0].aID;
+
+  const deleteempAcc = () => {
+    axios.delete("http://localhost:8080/bankaccountdelete/7")
+    console.log("Account Deleted ! ")
+  }
   
 
       return (    
@@ -63,7 +91,7 @@ export default function Emploaccount() {
               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
               </td>
               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <button type="button" >
+                <button type="button" onClick={() => deleteempAcc()}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                   </svg>
