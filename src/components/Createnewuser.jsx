@@ -3,8 +3,10 @@
 import React from 'react'
 import user1Img from '../assets/user1.jpg'
 import { useState } from "react";
-import axios from 'axios';
+import axioes from 'axios';
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Createnewuser() {
 
@@ -28,10 +30,10 @@ export default function Createnewuser() {
 
     axios({
       method: "post",
-      url: "http://localhost:8080/createbankusers",
+      url: "http://localhost:8080/createbankuser",
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Acces-Control-Allow-Origin": "*",
+        "Acces-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
       data: {
         fName: fName,
@@ -44,10 +46,10 @@ export default function Createnewuser() {
       mode: "cors",
     }).then((res) => {
       console.log("response", res.data.body.jwt)
-      console.log("user", res.data.body.user.uId)
+      console.log("user", res.data.body.user.uID)
 
       localStorage.setItem('jwt', res.data.body.jwt)
-      localStorage.setItem('user', JSON.stringify(res.data.body.user))
+      localStorage.setItem('user', JSON.stringify(res.data.body.users))
       console.log(res.data.body.user)
       console.log(localStorage.getItem('user'))
 
@@ -93,7 +95,7 @@ export default function Createnewuser() {
                 <p className='flex items-center'><input className='mr-2' type="checkbox" />Remember me</p>
                 <p>Forgot Password</p>
             </div> */}
-          <div><button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' onClick={getnewuser}>Submit</button></div>
+          <div><button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' onClick={getnewuser}>Submit</button><ToastContainer /></div>
           <Link to="/admin">
             <button className='w-full my-1 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg'>Back</button>
           </Link>
