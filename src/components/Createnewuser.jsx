@@ -1,11 +1,10 @@
-import React from 'react'
 // import loginImg from '../assets/login.jpg'
+// import { useNavigate } from 'react-router-dom';
+import React from 'react'
 import user1Img from '../assets/user1.jpg'
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
 
 export default function Createnewuser() {
 
@@ -16,17 +15,15 @@ export default function Createnewuser() {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('');
   var jwt = localStorage.getItem("jwt")
-  // const navigate = useNavigate();
 
   const getnewuser = (e) => {
 
-    // console.log("login data", e)
-    console.log(fName)
-    console.log(lName)
-    console.log(addres)
-    console.log(userEmail)
-    console.log(password)
-    console.log(type)
+    console.log("First Name:- " + fName)
+    console.log("Last Name:- " + lName)
+    console.log("Residential Address:- " + addres)
+    console.log("User Email:- " + userEmail)
+    console.log("User Password:- " + password)
+    console.log("User Type:- " + type)
     console.log(jwt)
 
     axios({
@@ -44,7 +41,6 @@ export default function Createnewuser() {
         password: password,
         type: type
       },
-      // withCredentials: true,
       mode: "cors",
     }).then((res) => {
       console.log("response", res.data.body.jwt)
@@ -56,13 +52,13 @@ export default function Createnewuser() {
       console.log(localStorage.getItem('user'))
 
     })
+    
   }
 
   return (
 
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
       <div className='hidden sm:block'>
-
         <img className='w-full h-full object-cover' src={user1Img} alt="" />
       </div>
       <div className='bg-violet-200 flex flex-col justify-center'>
@@ -93,22 +89,14 @@ export default function Createnewuser() {
             <input className='rounded-lg bg-violet-200 mt-1 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setType(e.target.value)} />
           </div>
 
-
           {/* <div className='flex justify-between text-gray-600 py-2'>
                 <p className='flex items-center'><input className='mr-2' type="checkbox" />Remember me</p>
                 <p>Forgot Password</p>
             </div> */}
-
-
-          <button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' onClick={getnewuser}>Submit</button>
-
+          <div><button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' onClick={getnewuser}>Submit</button></div>
           <Link to="/admin">
-
             <button className='w-full my-1 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg'>Back</button>
-
           </Link>
-
-
           {/* 
             <button className='w-full my-1 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg'>Back</button> */}
 
@@ -117,5 +105,5 @@ export default function Createnewuser() {
 
       </div>
     </div>
-  )
+  );
 }
