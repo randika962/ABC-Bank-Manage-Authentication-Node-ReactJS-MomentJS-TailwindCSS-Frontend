@@ -22,7 +22,7 @@ export default function Mytransaction() {
   var users = JSON.parse(localStorage.getItem("users"))
 
   const pdfexport = () => {
-    console.log("Welcome pdf export service !")
+    console.log("Welcome pdf export service !!!")
     axios.get("http://localhost:8080/bankstransaction/ABC_Transaction/2")
     console.log(axios.get("http://localhost:8080/bankstransaction/ABC_Transaction/2"))
   }
@@ -57,7 +57,7 @@ export default function Mytransaction() {
           class="p-1 bg-white border rounded max-w-sm"
           alt="..."
         />
-        &nbsp;&nbsp;&nbsp;
+
         {/* <button type="button" className='w-40 h-10 my-5 py-2 text-center border-black bg-light bg-light bg-violet-300 hover:bg-slate-300 text-black font-semibold rounded-lg' onClick={ ()  => pdfexport() }>
                   PDF Export
         </button>  */}
