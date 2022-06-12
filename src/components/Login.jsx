@@ -1,8 +1,7 @@
-import React from 'react'
+// import { Link } from "react-router-dom";
 // import loginImg from '../assets/login.jpg'
+import React from 'react'
 import loginImg from '../assets/login2.jpg'
-// import {Link} from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -15,33 +14,37 @@ export default function Login() {
   const navigate = useNavigate();
 
   const authhandle = (e) => {
-    console.log("login data", e)
-    const url = 'http://localhost:8080/authenticate'
+    console.log("login data", userEmail)
+    const url = 'https://localhost:8080/authenticate'
     axios.post(url, {
       userEmail: userEmail,
       password: password
     }).then((res) => {
       console.log("response", res.data.body.jwt)
-      console.log("user", res.data.body.user.uId)
+      console.log("user", res.data.body.user.uID)
 
       localStorage.setItem('jwt', res.data.body.jwt)
-      localStorage.setItem('user', JSON.stringify(res.data.body.user))
-      console.log(res.data.body.user)
+      localStorage.setItem('user', JSON.stringify(res.data.body.users))
+      console.log(res.data.body.users)
       console.log(localStorage.getItem('user'))
 
-      if (res.data.body.user.type == 'A') {
+      if (res.data.body.users.type == 'A') {
         console.log("type: Admin")
         console.log(res.data.body)
-        console.log(res.data.body.user.fName)
+        console.log(res.data.body.users.fName)
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/admin")
-      } else if (res.data.body.user.type == 'E') {
+      } else if (res.data.body.users.type == 'E') {
         console.log("type: employee")
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/emplyoeedash")
-      } else if (res.data.body.user.type == 'C') {
+      } else if (res.data.body.users.type == 'C') {
         console.log("type: customer")
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/customerdash")
       } else {
         console.log("type: invalid")
+        alert('Invalid User ')
       }
 
     })
@@ -51,7 +54,6 @@ export default function Login() {
 
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
       <div className='hidden sm:block'>
-
         <img className='w-full h-full object-cover' src={loginImg} alt="" />
       </div>
       <div className='bg-violet-200 flex flex-col justify-center'>
@@ -79,7 +81,7 @@ export default function Login() {
 
       </div>
     </div>
-  )
+  );
 }
 
 
