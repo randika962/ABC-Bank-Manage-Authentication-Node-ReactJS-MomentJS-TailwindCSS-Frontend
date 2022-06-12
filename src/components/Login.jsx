@@ -14,7 +14,7 @@ export default function Login() {
   const [userEmail, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValue: {
+    defaultValues: {
       email: " ",
       password: ""
     }
@@ -24,30 +24,30 @@ export default function Login() {
 
   const authhandle = (e) => {
     console.log("login data", userEmail)
-    const url = 'https://localhost:8080/authenticate'
+    const url = 'http://localhost:8080/authenticate'
     axios.post(url, {
       userEmail: userEmail,
       password: password
     }).then((res) => {
       console.log("response", res.data.body.jwt)
-      console.log("user", res.data.body.user.uID)
+      console.log("user", res.data.body.user.uId)
 
       localStorage.setItem('jwt', res.data.body.jwt)
-      localStorage.setItem('users', JSON.stringify(res.data.body.users))
+      localStorage.setItem('user', JSON.stringify(res.data.body.user))
       console.log(res.data.body.user)
       console.log(localStorage.getItem('user'))
 
-      if (res.data.body.users.type == 'A') {
+      if (res.data.body.user.type == 'A') {
         console.log("type: Admin")
         console.log(res.data.body)
-        console.log(res.data.body.users.fName)
-        alert('Welcome !!!  ' + res.data.body.users.fName)
+        console.log(res.data.body.user.fName)
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/admin")
-      } else if (res.data.body.users.type == 'E') {
+      } else if (res.data.body.user.type == 'E') {
         console.log("type: employee")
         alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/emplyoeedash")
-      } else if (res.data.body.users.type == 'C') {
+      } else if (res.data.body.user.type == 'C') {
         console.log("type: customer")
         alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/customerdash")

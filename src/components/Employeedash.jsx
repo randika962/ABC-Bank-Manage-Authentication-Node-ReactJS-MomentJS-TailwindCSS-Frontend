@@ -10,12 +10,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Employeedash() {
 
-  var users = JSON.parse(localStorage.getItem("users"))
+  var user = JSON.parse(localStorage.getItem("user"))
   var username = localStorage.getItem("user")
   var fName = localStorage.getItem("userid")
   var jwt = localStorage.getItem("jwt")
   const navigate = useNavigate();
-  const url = 'http://localhost:8080/bankuser/3'
+  const url = 'http://localhost:8080/bankusers/3'
   const eoutsign = (e) => {
 
     localStorage.removeItem('jwt')
@@ -34,7 +34,7 @@ export default function Employeedash() {
             console.log("All User Details:- " + user)
           }
           {/* <span className="font-semibold text-3xl tracking-tight">WELCOME {`${user.fName} ${user.lName}`} ! </span> */}
-          <span className="font-semibold text-3xl tracking-tight">WELCOME Dananjalee Kaushalya ! </span>
+          <span className="font-semibold text-3xl tracking-tight">WELCOME Nikeshala Madubhashini ! </span>
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
