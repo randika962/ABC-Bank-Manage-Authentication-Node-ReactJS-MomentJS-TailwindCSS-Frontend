@@ -1,19 +1,20 @@
+// import { Link } from "react-router-dom";
+// import { useState } from "react";
+// import axios from 'axios';
+// import { NavLink, useNavigate } from 'react-router-dom';
 import React from 'react'
 import classImg from "../assets/class1.jpg"
 import classImg1 from "../assets/class.jpg"
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Customerdash() {
 
-  var user = JSON.parse(localStorage.getItem("user"))
+  var users = JSON.parse(localStorage.getItem("users"))
   var username = localStorage.getItem("user")
   var fName = localStorage.getItem("userid")
   var jwt = localStorage.getItem("jwt")
   const navigate = useNavigate();
-  const url = 'http://localhost:8080/bankusers/2'
+  const url = 'http://localhost:8080/bankuser/2'
   const ccoutsign = (e) => {
 
     localStorage.removeItem('jwt')
@@ -24,44 +25,39 @@ export default function Customerdash() {
 
   return (
     <div>
-      <nav class="flex items-center justify-between flex-wrap bg-violet-300 p-6">
-        <div class="flex items-center flex-shrink-0 text-black mr-6">
-          <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" ></svg>
-          <span class="font-semibold text-3xl tracking-tight">WELCOME {`${user.fName} ${user.lName}`} ! </span>
+      <nav className="flex items-center justify-between flex-wrap bg-violet-300 p-6">
+        <div className="flex items-center flex-shrink-0 text-black mr-6">
+          <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" ></svg>
+          <span className="font-semibold text-3xl tracking-tight">WELCOME {`${users.fName} ${users.lName}`} ! </span>
         </div>
-        <div class="block lg:hidden">
-          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-
+        <div className="block lg:hidden">
+          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
           </button>
         </div>
-        <div class="items-center hidden space-x-8 lg:flex ">
-          <div class="text-base lg:flex-grow">
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
+        <div className="items-center hidden space-x-8 lg:flex ">
+          <div className="text-base lg:flex-grow">
+            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
               Home
             </a>
-            <a href="/profile" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
+            <a href="/profile" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
               Profile
             </a>
-            <a href="/withdrawsection" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
+            <a href="/withdrawsection" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
               Withdraw
             </a>
-            <a href="/depositsection" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white mr-4">
+            <a href="/depositsection" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white mr-4">
               Deposit
             </a>
-            <a href="/mytransaction" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white">
+            <a href="/mytransaction" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white">
               MyTransaction
             </a>
           </div>
           <div>
-            <a href="/" class="inline-block  px-4 py-2 leading-none border rounded font-semibold text-lg text-balck border-white hover:border-transparent hover:text-violet-400 hover:bg-white mt-4 lg:mt-0" onClick={ccoutsign}>Log Out</a>
-
+            <a href="/" className="inline-block  px-4 py-2 leading-none border rounded font-semibold text-lg text-balck border-white hover:border-transparent hover:text-violet-400 hover:bg-white mt-4 lg:mt-0" onClick={ccoutsign}>Log Out</a>
           </div>
         </div>
-
       </nav>
-
       <div>
-
         <section id="hero">
           <div className='container flex flex-col-reverse md:flex-row item-center px-6 mx-auto mt-10 space-y-0 md:space-y-0'>
             <div className='flex flex-col mb-32 space-y-12 md:w-1/2'>
@@ -77,29 +73,19 @@ export default function Customerdash() {
               </div>
               <div className='md:w-1/2'>
                 <img src={classImg} alt="" />
-
               </div>
-
-
             </div>
             <div className='md:w-1/2'>
               <img src={classImg1} alt="" />
-
             </div>
           </div>
         </section>
-
-
-
-
         <div className='w-full min-h-screen'>
-
           {/* <img className='w-full min-h-full object-cover' src={addash1Img} alt="" /> */}
-
         </div>
       </div>
 
     </div>
 
-  )
-};
+  );
+}
