@@ -26,6 +26,18 @@ export default function Admin() {
     navigate("/")
   }
 
+  const getallusers = (e) => {
+    var user = JSON.parse(localStorage.getItem("user"))
+    var fName = localStorage.getItem("fName")
+    var jwt = localStorage.getItem("jwt")
+    const url = 'http://localhost:8080/bankusers'
+
+    console.log(jwt)
+    console.log(url)
+    console.log("getalluers")
+
+
+  }
 
   return (
     <div>
