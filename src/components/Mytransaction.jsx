@@ -13,16 +13,12 @@ import { useReactToPrint } from 'react-to-print';
 
 
 export default function Mytransaction() {
-
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-  });
+	
  
-  var users = JSON.parse(localStorage.getItem("users"))
+  var user = JSON.parse(localStorage.getItem("user"))
 
   const pdfexport = () => {
-    console.log("Welcome pdf export service !!!")
+    console.log("Welcome pdf export service !")
     axios.get("http://localhost:8080/bankstransaction/ABC_Transaction/2")
     console.log(axios.get("http://localhost:8080/bankstransaction/ABC_Transaction/2"))
   }
@@ -43,24 +39,25 @@ export default function Mytransaction() {
           <div className="text-base lg:flex-grow">
           </div>
           <div>
-            <button type="button" className="inline-block  px-4 py-2 leading-none border rounded font-semibold text-lg text-balck border-white hover:border-transparent hover:text-violet-400 hover:bg-white mt-4 lg:mt-0" onClick={ ()  => handlePrint() }>Print</button>
+            <button type="button" className="inline-block  px-4 py-2 leading-none border rounded font-semibold text-lg text-balck border-white hover:border-transparent hover:text-violet-400 hover:bg-white mt-4 lg:mt-0" onClick={ ()  => pdfexport() }>Print</button>
           </div>
           <div>
             <a href="/customerdash" className="inline-block  px-4 py-2 leading-none border rounded font-semibold text-lg text-balck border-white hover:border-transparent hover:text-violet-400 hover:bg-white mt-4 lg:mt-0">Back</a>
           </div>
         </div>
       </nav>
-      <div refs={componentRef}>
+      <div ref={componentRef}>
       <div className="flex flex-wrap justify-center">
         <img
           src={profileImg}
           class="p-1 bg-white border rounded max-w-sm"
           alt="..."
         />
-
+        &nbsp;&nbsp;&nbsp;
         {/* <button type="button" className='w-40 h-10 my-5 py-2 text-center border-black bg-light bg-light bg-violet-300 hover:bg-slate-300 text-black font-semibold rounded-lg' onClick={ ()  => pdfexport() }>
                   PDF Export
         </button>  */}
+        {/* <img className='w-full min-h-full object-cover' src={addash1Img} alt="" /> */}
         </div>
       <div>
         <br></br><br></br>
@@ -74,6 +71,10 @@ export default function Mytransaction() {
         <br></br><br></br>
         <span className="font-semibold text-2xl tracking-tight">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transaction Type :-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`${user.bankaccount[0].transaction[0].transacType}`}</span>
       </div>
+      {/* <div>
+        <br></br><br></br>
+        <span className="font-semibold text-2xl tracking-tight">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transaction Time :-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`${user.bankaccount[0].transaction[0].transacTime}`}</span>
+      </div> */}
       <div>
         <br></br><br></br>
         <span className="font-semibold text-2xl tracking-tight">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source Account ID :-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`${user.bankaccount[0].transaction[0].sourceAccId}`}</span>
