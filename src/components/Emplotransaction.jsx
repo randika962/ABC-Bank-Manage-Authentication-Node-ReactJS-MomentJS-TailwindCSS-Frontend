@@ -12,7 +12,7 @@ export default function Emplotransaction() {
 
   axios({
     method: "get",
-    url: "http://localhost:8080/banktransactions",
+    url: "http://localhost:8080/banktransaction",
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
