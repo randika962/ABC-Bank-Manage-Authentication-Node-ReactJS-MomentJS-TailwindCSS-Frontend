@@ -12,7 +12,7 @@ export default function Transaction() {
 
     axios({
         method: "get",
-        url: "http://localhost:8080/banktransactions",
+        url: "http://localhost:8080/banktransaction",
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
@@ -25,7 +25,7 @@ export default function Transaction() {
     })
 
     const transObj = localStorage.getItem('transaction')
-    const tansaction = JSON.parse(tranObj);
+    const tansaction = JSON.parse(transObj);
     console.log(tansaction)
 
     return (
@@ -51,14 +51,14 @@ export default function Transaction() {
                 {tansaction.map((blog) => (
                     <tr className="bg-white border-b transition duration-300 ease-in-out ">
                         <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >Transaction ID</th>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{blog.sourcesAccId}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{blog.sourceAccId}</td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         </td>
                         <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >Transaction Description</th>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {blog.transacDescription}
+                            {blog.transacDecription}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         </td>
@@ -66,7 +66,7 @@ export default function Transaction() {
                         </td>
                         <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >Transaction Amount</th>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {blog.transaconAmount}
+                            {blog.transacAmount}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         </td>
@@ -74,7 +74,7 @@ export default function Transaction() {
                         </td>
                         <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >Transaction Time</th>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {blog.transaconTime}
+                            {blog.transacTime}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         </td>
