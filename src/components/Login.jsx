@@ -5,8 +5,6 @@ import loginImg from '../assets/login2.jpg'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { toast } from "react-toastify";
-import { useForm } from 'react-hook-form';
 
 
 export default function Login() {
@@ -41,15 +39,12 @@ export default function Login() {
         console.log("type: Admin")
         console.log(res.data.body)
         console.log(res.data.body.user.fName)
-        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/admin")
       } else if (res.data.body.user.type == 'E') {
         console.log("type: employee")
-        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/emplyoeedash")
       } else if (res.data.body.user.type == 'C') {
         console.log("type: customer")
-        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/customerdash")
       } else {
         console.log("type: invalid")
