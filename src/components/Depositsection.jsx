@@ -32,23 +32,25 @@ export default function Depositsection() {
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
       data: {
-        sourceAccId: sourceACCId,
-        transacDecription: transacDescription,
-        transacAmount: transaconAmount,
-        transacTime: transaconTime,
+        sourceAccId: sourceAccId,
+        transacDecription: transacDecription,
+        transacAmount: transacAmount,
+        transacTime: transacTime,
 
       },
       mode: "cors",
     }).then((res) => {
       console.log("response", res.data.body.jwt)
-      console.log("user", res.data.body.user.uid)
+      console.log("user", res.data.body.user.uId)
 
       localStorage.setItem('jwt', res.data.body.jwt)
-      localStorage.setItem('user', JSON.stringfy(res.data.body.users))
+      localStorage.setItem('user', JSON.stringify(res.data.body.user))
       console.log(res.data.body.user)
       console.log(localStorage.getItem('user'))
-
-    })
+      console.log("response", res.status)
+    }).catch((err => {
+      console.log('Error: ' + err.name);
+    }));
     toast.info("Your Deposit Successfully !")
   }
 
@@ -63,15 +65,15 @@ export default function Depositsection() {
           <h2 className='text-3xl dark:text-black font-bold text-center'>Please Enter the Detalils</h2>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Account Number</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setAccountNumber(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setAccountNumber(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Transaction Description</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setDescription(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" required onChange={(e) => setDescription(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Deposit Amount</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setAmount(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setAmount(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Date/Time</label>

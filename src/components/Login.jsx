@@ -5,6 +5,7 @@ import loginImg from '../assets/login2.jpg'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 
 export default function Login() {
@@ -39,19 +40,24 @@ export default function Login() {
         console.log("type: Admin")
         console.log(res.data.body)
         console.log(res.data.body.user.fName)
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/admin")
       } else if (res.data.body.user.type == 'E') {
         console.log("type: employee")
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/emplyoeedash")
       } else if (res.data.body.user.type == 'C') {
         console.log("type: customer")
+        alert('Welcome !!!  ' + res.data.body.user.fName)
         navigate("/customerdash")
       } else {
         console.log("type: invalid")
         alert('Invalid User ')
       }
 
-    })
+    }).catch((err => {
+      alert('Invalid ! Please Check Your Email or Password ' + err.name);
+    }));
   }
 
   return (
@@ -70,7 +76,7 @@ export default function Login() {
             Email & Password</h2>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>User Email</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' required {...register("email", { required: 'This is required' })} type="email" onChange={(e) => setEmail(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' {...register("email", { required: 'This is required' })} type="email" required onChange={(e) => setEmail(e.target.value)} />
             {errors.email?.message}
           </div>
           <div className='flex flex-col text-gray-800 py-2'>

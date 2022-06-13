@@ -27,17 +27,17 @@ export default function Withdrawsection() {
 
     axios({
       method: "post",
-      url: "http://localhost:8080/withdraws",
+      url: "http://localhost:8080/withdraw",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
       data: {
-        sourceAccId: sourceACCId,
-        transacDecription: transacDescription,
-        transacAmount: transaconAmount,
-        transacTime: transaconTime,
-        
+        sourceAccId: sourceAccId,
+        transacDecription: transacDecription,
+        transacAmount: transacAmount,
+        transacTime: transacTime,
+
       },
       mode: "cors",
     }).then((res) => {
@@ -48,8 +48,10 @@ export default function Withdrawsection() {
       localStorage.setItem('user', JSON.stringify(res.data.body.user))
       console.log(res.data.body.user)
       console.log(localStorage.getItem('user'))
-      
-    })
+      console.log("response", res.status)
+    }).catch((err => {
+      console.log('Error: ' + err.name);
+    }));
     toast.success("Your Withdraw Successfully !")
   }
 
@@ -70,15 +72,15 @@ export default function Withdrawsection() {
       </div> */}
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Account Number</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setAccountNumber(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setAccountNumber(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Transaction Description</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setDescription(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" required onChange={(e) => setDescription(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Withdraw Amount</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setAmount(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setAmount(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Date/Time</label>

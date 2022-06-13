@@ -62,15 +62,15 @@ export default function Createnewaccount() {
           <h2 className='text-3xl dark:text-black font-bold text-center'>Please Enter the Detalils</h2>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Account Number</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setaccountnum(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setaccountnum(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>Account Balance</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setbalance(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setbalance(e.target.value)} />
           </div>
           <div className='flex flex-col text-gray-800 py-2'>
             <label>User ID</label>
-            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="text" onChange={(e) => setuserid(e.target.value)} />
+            <input className='rounded-lg bg-violet-200 mt-2 p-2 focus:border-blue-500 focus:bg-white focus:outline-none' type="number" required onChange={(e) => setuserid(e.target.value)} />
           </div>
 
           {/* <div className='flex justify-between text-gray-600 py-2'>
