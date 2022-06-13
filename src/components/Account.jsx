@@ -2,7 +2,7 @@
 // import {Link} from "react-router-dom";
 // import profileImg from '../assets/profile.png'
 import React from 'react'
-import axios from 'axioes';
+import axios from 'axios';
 
 
 export default function Account() {
@@ -14,15 +14,15 @@ export default function Account() {
     url: "http://localhost:8080/bankaccount",
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Method": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-      "Authorization": `Bearrer ` + jwt
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Authorization": `Bearer ` + jwt
     }, data: null,
 
     mode: "cors",
   }).then((res) => {
 
     var accounts = res.data;
-    localStorage.setItem("account", JSON.stringfy(accounts))
+    localStorage.setItem("account", JSON.stringify(accounts))
   })
 
   const accountsObj = localStorage.getItem('account')
@@ -75,22 +75,14 @@ export default function Account() {
             </td>
             <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >Account Balance</th>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {blog.aBalace}
-            </td>
-            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-            </td>
-            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-            </td>
-            <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >User ID</th>
-            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {blog.uID}
+              {blog.aBalance}
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <button type="button" onClick={() => deleteAcc()} >
+              <button type="button" onClick={() => deleteAcc()}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>

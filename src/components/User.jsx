@@ -29,6 +29,10 @@ export default function User() {
   console.log(user);
 
 
+  const deleteUserz = () => {
+    axios.delete("http://localhost:8080/bankusersdelete/8")
+    console.log("User Deleted ! ")
+  }
 
   return (
     <div>
@@ -109,6 +113,45 @@ export default function User() {
     </div>
   );
 }
+
+
+
+// --------------------------------------Use  Effect----------------------------------------
+
+
+// const [user, setUser] = useState([])
+
+//   useEffect(() => {
+//    const allusercall = () => {
+//     var jwt = localStorage.getItem("jwt")
+
+//     axios({
+//       method: "get",
+//       url: "http://localhost:8080/bankusers",
+//       headers: {
+//         "Access-Control-Allow-Origin": "*",
+//         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+//         "Authorization": `Bearer ` + jwt
+//       }, data: null,
+  
+//       mode: "cors",
+//     }).then((res) => {
+//       var users = res.data;
+//       localStorage.setItem("user", JSON.stringify(users))
+//     })
+  
+//     const usersObj = localStorage.getItem('user')
+//     const users = JSON.parse(usersObj);
+//     setUser(users.body);
+//     console.log(user);  
+//    }
+//    allusercall()
+//   },[]);
+
+
+// ------------------------------------------------------------------------------------------
+
+
 
 // export default User;
 
