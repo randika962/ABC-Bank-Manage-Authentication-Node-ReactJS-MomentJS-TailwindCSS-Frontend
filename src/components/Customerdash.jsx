@@ -9,12 +9,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Customerdash() {
 
-  var users = JSON.parse(localStorage.getItem("users"))
+  var user = JSON.parse(localStorage.getItem("user"))
   var username = localStorage.getItem("user")
   var fName = localStorage.getItem("userid")
   var jwt = localStorage.getItem("jwt")
   const navigate = useNavigate();
-  const url = 'http://localhost:8080/bankuser/2'
+  const url = 'http://localhost:8080/bankusers/2'
   const ccoutsign = (e) => {
 
     localStorage.removeItem('jwt')
@@ -28,7 +28,7 @@ export default function Customerdash() {
       <nav className="flex items-center justify-between flex-wrap bg-violet-300 p-6">
         <div className="flex items-center flex-shrink-0 text-black mr-6">
           <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" ></svg>
-          <span className="font-semibold text-3xl tracking-tight">WELCOME {`${users.fName} ${users.lName}`} ! </span>
+          <span className="font-semibold text-3xl tracking-tight">WELCOME {`${user.fName} ${user.lName}`} ! </span>
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
