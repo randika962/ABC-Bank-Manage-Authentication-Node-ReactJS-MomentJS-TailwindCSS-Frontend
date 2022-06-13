@@ -7,11 +7,12 @@ import axios from 'axios';
 
 export default function Emploaccount() {
 
-var jwt = localStorage.getItem("jwt")
+
+  var jwt = localStorage.getItem("jwt")
 
   axios({
     method: "get",
-    url: "http://localhost:8080/bankaccounts",
+    url: "http://localhost:8080/bankaccount",
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
@@ -26,17 +27,16 @@ var jwt = localStorage.getItem("jwt")
   })
 
   const accountsObj = localStorage.getItem('account')
-  const account = JSON.parse(accountObj);
+  const account = JSON.parse(accountsObj);
   console.log(account)
   console.log(`acc id is : ${account[0].aId}`)
 
-  const accAID = account[0].aID;
+  const accAID = account[0].aId;
 
   const deleteempAcc = () => {
     axios.delete("http://localhost:8080/bankaccountdelete/7")
     console.log("Account Deleted ! ")
   }
-  
 
       return (    
         <div>
@@ -77,14 +77,6 @@ var jwt = localStorage.getItem("jwt")
               <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >Account Balance</th>
               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {blog.aBalance}
-              </td>
-              <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              </td>
-              <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              </td>
-              <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" >User ID</th>
-              <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {blog.uId}
               </td>
               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
               </td>
