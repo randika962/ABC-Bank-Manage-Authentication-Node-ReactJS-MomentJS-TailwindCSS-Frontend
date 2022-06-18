@@ -6,8 +6,20 @@ import React from 'react'
 import classImg from "../assets/class1.jpg"
 import classImg1 from "../assets/class.jpg"
 import { useNavigate } from 'react-router-dom';
+import AliceCarousel from 'react-alice-carousel';
+import "react-alice-carousel/lib/alice-carousel.css";
+
+
+import bank2Img from "../assets/bank2.jpg";
+import bank3Img from "../assets/bank3.jpg";
+import bank1Img from "../assets/bank1.jpg";
+import bank4Img from "../assets/bank4.jpg";
+import bank5Img from "../assets/bank5.jpg";
 
 export default function Customerdash() {
+
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
   var user = JSON.parse(localStorage.getItem("user"))
   var username = localStorage.getItem("user")
@@ -21,14 +33,32 @@ export default function Customerdash() {
     localStorage.removeItem('user')
     localStorage.removeItem('userid')
     navigate("/")
-  }
 
+
+  }
+let btnShow =document.querySelector("button");
+  let output =document.querySelector("h1");
+ 
+// btnShow.addEventListener('click', ()=>{
+//   let today=new Date();
+
+//   let month = today.getMonth() + 1;
+//   let year = today.getFullYear();
+//   let  date  = today.getDate();
+
+//   let current_date=  month+"/"+date+"/"+year;
+//   console.log("current date")
+//   output.innerText=current_date;
+// }
+// )
   return (
     <div>
       <nav className="flex items-center justify-between flex-wrap bg-violet-300 p-6">
         <div className="flex items-center flex-shrink-0 text-black mr-6">
           <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" ></svg>
-          <span className="font-semibold text-3xl tracking-tight">WELCOME {`${user.fName} ${user.lName}`} ! </span>
+          <span className="font-semibold text-3xl tracking-tight">WELCOME {`${user.fName} ${user.lName}`} !  <h1 className='"font-semibold text-2xl tracking-tight"'>
+         Today- {date}
+</h1> </span>
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -57,7 +87,21 @@ export default function Customerdash() {
           </div>
         </div>
       </nav>
-      <div>
+
+      <div >
+      
+      <AliceCarousel autoPlay autoPlayInterval="1000">
+
+      < img  className="w-full min-h-full object-cover" src={bank1Img} alt="sliderimg" />
+      
+      <img className="w-full min-h-full object-cover"  src={bank2Img} alt="sliderimg"/>
+      <img className="w-full min-h-full object-left" src={bank3Img} alt ="sliderimg"/>
+      <img   className="w-full min-h-full object-left"src={bank4Img} alt="sliderimg"/>
+      <img   className="w-full min-h-full object-left"src={bank5Img} alt="sliderimg"/>
+</AliceCarousel>
+      </div>
+
+      {/* <div>
         <section id="hero">
           <div className='container flex flex-col-reverse md:flex-row item-center px-6 mx-auto mt-10 space-y-0 md:space-y-0'>
             <div className='flex flex-col mb-32 space-y-12 md:w-1/2'>
@@ -83,9 +127,9 @@ export default function Customerdash() {
         <div className='w-full min-h-screen'>
           {/* <img className='w-full min-h-full object-cover' src={addash1Img} alt="" /> */}
         </div>
-      </div>
+      // </div>
 
-    </div>
+    // </div> */}
 
   );
 }
