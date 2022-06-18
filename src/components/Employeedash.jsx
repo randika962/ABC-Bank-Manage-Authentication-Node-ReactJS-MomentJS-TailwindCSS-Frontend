@@ -6,9 +6,21 @@
 import count1Img from "../assets/count1.jpg"
 import countImg from "../assets/count.jpg"
 import { useNavigate } from 'react-router-dom';
+import AliceCarousel from 'react-alice-carousel';
+import "react-alice-carousel/lib/alice-carousel.css";
+
+import bank2Img from "../assets/bank2.jpg";
+import bank3Img from "../assets/bank3.jpg";
+import bank1Img from "../assets/bank1.jpg";
+import bank4Img from "../assets/bank4.jpg";
+import bank5Img from "../assets/bank5.jpg";
+
 
 
 export default function Employeedash() {
+
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
   var user = JSON.parse(localStorage.getItem("user"))
   var username = localStorage.getItem("user")
@@ -23,7 +35,8 @@ export default function Employeedash() {
     localStorage.removeItem('userid')
     navigate("/")
   }
-
+  let btnShow =document.querySelector("button");
+  let output =document.querySelector("h1");
 
   return (
     <div>
@@ -34,7 +47,9 @@ export default function Employeedash() {
             console.log("All User Details:- " + user)
           }
           {/* <span className="font-semibold text-3xl tracking-tight">WELCOME {`${user.fName} ${user.lName}`} ! </span> */}
-          <span className="font-semibold text-3xl tracking-tight">WELCOME Nikeshala Madubhashini ! </span>
+          <span className="font-semibold text-3xl tracking-tight">WELCOME Nikeshala Madubhashini !<h1 className='"font-semibold text-2xl tracking-tight"'>
+         Today- {date}
+</h1> </span>
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -63,7 +78,23 @@ export default function Employeedash() {
           </div>
         </div>
       </nav>
-      <section id="hero">
+      <div >
+      
+      <AliceCarousel autoPlay autoPlayInterval="1000">
+
+      < img  className="w-full min-h-full object-cover" src={bank1Img} alt="sliderimg" />
+      
+      <img className="w-full min-h-full object-cover"  src={bank2Img} alt="sliderimg"/>
+      <img className="w-full min-h-full object-left" src={bank3Img} alt ="sliderimg"/>
+      <img   className="w-full min-h-full object-left"src={bank4Img} alt="sliderimg"/>
+      <img   className="w-full min-h-full object-left"src={bank5Img} alt="sliderimg"/>
+</AliceCarousel>
+      </div>
+    
+
+
+
+      {/* <section id="hero">
         <div className='container flex flex-col-reverse md:flex-row item-center px-6 mx-auto mt-10 space-y-0 md:space-y-0'>
           <div className='flex flex-col mb-32 space-y-12 md:w-1/2'>
             <h1 className='max-w-md text-4xl font-bold text-center md:text-5xl md:text-left'>
@@ -88,6 +119,6 @@ export default function Employeedash() {
       <div className='w-full min-h-screen'>
         {/* <img className='w-full min-h-full object-cover' src={addash1Img} alt="" /> */}
       </div>
-    </div>
+    // </div> */}
   );
 }
