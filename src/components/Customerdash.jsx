@@ -6,9 +6,9 @@ import React from 'react'
 import classImg from "../assets/class1.jpg"
 import classImg1 from "../assets/class.jpg"
 import { useNavigate } from 'react-router-dom';
+
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
-
 
 import bank2Img from "../assets/bank2.jpg";
 import bank3Img from "../assets/bank3.jpg";
@@ -64,7 +64,7 @@ let btnShow =document.querySelector("button");
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
           </button>
         </div>
-        <div className="items-center hidden space-x-8 lg:flex ">
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
           <div className="text-base lg:flex-grow">
             <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
               Home
@@ -78,6 +78,12 @@ let btnShow =document.querySelector("button");
             <a href="/depositsection" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white mr-4">
               Deposit
             </a>
+            <a href="/transfersection" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white mr-4">
+              Transfer
+            </a>
+
+
+
             <a href="/mytransaction" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white">
               MyTransaction
             </a>

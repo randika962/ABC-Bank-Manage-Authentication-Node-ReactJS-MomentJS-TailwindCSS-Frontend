@@ -6,6 +6,7 @@
 import count1Img from "../assets/count1.jpg"
 import countImg from "../assets/count.jpg"
 import { useNavigate } from 'react-router-dom';
+
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -17,10 +18,15 @@ import bank5Img from "../assets/bank5.jpg";
 
 
 
-export default function Employeedash() {
 
+
+export default function Employeedash() {
+   
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  console.log(date)
+
+  
 
   var user = JSON.parse(localStorage.getItem("user"))
   var username = localStorage.getItem("user")
@@ -55,7 +61,7 @@ export default function Employeedash() {
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
           </button>
         </div>
-        <div className="items-center hidden space-x-8 lg:flex ">
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
           <div className="text-base lg:flex-grow">
             <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text-black hover:text-white mr-4">
               Home
