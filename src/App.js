@@ -14,7 +14,7 @@ import Profile from "./components/Profile";
 import Createnewaccount from  "./components/Createnewaccount";
 import Account from "./components/Account";
 import Createnewuser from "./components/Createnewuser";
-import Transaction from "./components/Transaction";
+import Alltransaction from "./components/Alltransactions";
 import User from "./components/User";
 import Emplouser from "./components/Emplouser";
 import Emploaccount from "./components/Emploaccount";
@@ -37,7 +37,7 @@ function App() {
     <Route path="/createnewaccount" element={<Createnewaccount/>}/>
     <Route path="/account" element={<Account/>}/>
     <Route path="/createnewuser" element={<Createnewuser/>}/>
-    <Route path="/transaction" element={<Transaction/>}/>
+    <Route path="/alltransaction" element={<Alltransaction/>}/>
     <Route path="/user" element={<User/>}/>
     <Route path="/emplouser" element={<Emplouser/>}/>
     <Route path="/emploaccount" element={<Emploaccount/>}/>
