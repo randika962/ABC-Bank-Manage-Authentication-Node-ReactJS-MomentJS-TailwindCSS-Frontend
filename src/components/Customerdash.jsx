@@ -78,6 +78,12 @@ let btnShow =document.querySelector("button");
             <a href="/depositsection" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white mr-4">
               Deposit
             </a>
+            <a href="/transfersection" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white mr-4">
+              Transfer
+            </a>
+
+
+
             <a href="/mytransaction" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-lg text- black hover:text-white">
               MyTransaction
             </a>

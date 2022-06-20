@@ -20,6 +20,7 @@ import Emplouser from "./components/Emplouser";
 import Emploaccount from "./components/Emploaccount";
 import Emplotransaction from "./components/Emplotransaction";
 import Mytransaction from "./components/Mytransaction";
+import Transfersection from "./components/Transfersection";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
     <Route path="/emploaccount" element={<Emploaccount/>}/>
     <Route path="/emplotransaction" element={<Emplotransaction/>}/>
     <Route path="/mytransaction" element={<Mytransaction/>}/>
+    <Route path="/transfersection" element={<Transfersection/>}/>
 
 
    </Routes>
