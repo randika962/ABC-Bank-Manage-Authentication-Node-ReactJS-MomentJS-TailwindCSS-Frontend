@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
+// import { Link } from "react-router-dom";
+
 
 export default function Login() {
 
@@ -85,8 +87,11 @@ export default function Login() {
             <p >{errors.password?.message}</p>
           </div>
           <div className='flex justify-between text-gray-600 py-2'>
-            <p className='flex items-center'><input className='mr-2' type="checkbox" />Remember me</p>
-            <p>Forgot Password</p>
+           <a href=" /resetpassword "> <p className='flex items-center'><input className='mr-2' type="checkbox" />Remember me</p></a>
+           
+           <a href=" /forgotpassword "><p>Forgot Password</p></a>
+         
+            {/* <p>Forgot Password</p> */}
           </div>
           {/* <Link to="/admin" >    */}
           <button className='w-full my-5 py-2 bg-light bg-light bg-violet-200 shadow-lg shadow-violet-500/50 hover:shadow-violet-500/40 text-black font-semibold rounded-lg' type="button" onClick={authhandle}>Sign In</button>

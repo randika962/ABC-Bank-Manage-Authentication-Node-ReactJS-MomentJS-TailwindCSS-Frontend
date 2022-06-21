@@ -21,6 +21,10 @@ import Emploaccount from "./components/Emploaccount";
 import Emplotransaction from "./components/Emplotransaction";
 import Mytransaction from "./components/Mytransaction";
 import Transfersection from "./components/Transfersection";
+import Resetpassword from "./components/Resetpassword";
+import Forgotpassword from "./components/Forgotpassword";
+import Confirmpassword from "./components/Confirmpassword";
+
 
 function App() {
   return (
@@ -45,7 +49,9 @@ function App() {
     <Route path="/emplotransaction" element={<Emplotransaction/>}/>
     <Route path="/mytransaction" element={<Mytransaction/>}/>
     <Route path="/transfersection" element={<Transfersection/>}/>
-
+    <Route path="/resetpassword" element={<Resetpassword/>}/>
+    <Route path="/forgotpassword" element={<Forgotpassword/>}/>
+    <Route path="/confirmpassword" element={<Confirmpassword/>}/>
 
    </Routes>
    </BrowserRouter>
